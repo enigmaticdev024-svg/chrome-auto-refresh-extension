@@ -1,0 +1,221 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 1.5rem;  /* Reduced padding to avoid scrolling */
+  max-width: 100%;
+  width: 20rem;
+  box-sizing: border-box;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  overflow-y: auto;  /* Prevent content overflow */
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-size: 1rem;
+}
+
+input[type="number"], input[type="text"] {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--input-border);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background-color: var(--input-background);
+  color: var(--input-text);
+  box-sizing: border-box;
+}
+
+button#toggleButton {
+  display: block;
+  width: 100%;
+  padding: 0.7rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  margin: 1rem 0;
+}
+
+
+
+button#toggleButton.stop {
+  background-color: #f44336;
+}
+
+#status, #interval, #stopPrompt {
+  font-size: 1rem;
+  margin-top: 0.75rem;
+}
+
+.toggle-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+
+.inline-sentence {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.inline-sentence span,
+.inline-sentence select {
+  display: inline;
+  vertical-align: middle;
+}
+
+select#monitorMode {
+  border: 1px solid var(--input-border);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background-color: var(--input-background);
+  color: var(--input-text);
+  box-sizing: border-box;
+  appearance: none;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLWNoZXZyb24tZG93biI+PHBvbHlsaW5lIHBvaW50cz0iNiA5IDEyIDE1IDE4IDkiLz48L3N2Zz4=');
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+  width: 50%;
+  margin-bottom: 0.75rem;  /* Added consistent margin */
+}
+
+select#monitorMode:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+/* Dark Mode Handling */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+  --input-border: #333;
+  --input-background: #333;
+  --input-text: #fff;
+}
+
+body.dark-mode select#monitorMode {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9ImZlYXRoZXIgZmVhdGhlci1jaGV2cm9uLWRvd24iPjxwb2x5bGluZSBwb2ludHM9IjYgOSAxMiAxNSAxOCA5Ii8+PC9zdmc+');
+  background-color: #333;
+  color: #fff;
+}
+
+/* Light Mode Colors */
+:root {
+  --background-color: #f4f4f9;
+  --text-color: #333;
+  --input-border: #ccc;
+  --input-background: #fff;
+  --input-text: #000;
+}
+
+/* Toggle Switch Styling */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 2.5rem;
+  height: 1.25rem;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 1.25rem;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 0.875rem;
+  width: 0.875rem;
+  left: 0.1875rem;
+  bottom: 0.1875rem;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(1.25rem);
+}
+
+#tipjar {
+  text-align: right;
+  margin-top: 20px;
+  font-size: xx-small;
+}
+
+#tipjar a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#emoji {
+  font-size: 2rem;
+}
+
+#buyText {
+  visibility: hidden;
+}
+
+#tipjar:hover #buyText {
+  visibility: visible;
+}
+
+/* Adjustments for small screens */
+@media (max-width: 400px) {
+  body {
+    padding: 1rem;
+  }
+
+  input[type="number"], input[type="text"], button {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+
+  select#monitorMode {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+}

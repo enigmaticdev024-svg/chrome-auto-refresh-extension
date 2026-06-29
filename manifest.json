@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Auto Refresh Nano",
+  "version": "1.3",
+  "description": "A lightweight autorefresher and page monitor.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "notifications"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "48": "icon.png"
+  }
+}
